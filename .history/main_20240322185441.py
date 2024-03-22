@@ -1,7 +1,5 @@
 from flask import Flask,render_template, request, redirect, send_file
 from extractors.berlin import extract_berlin_jobs
-from extractors.web3 import extract_web3_jobs
-from extractors.wwr import extract_wwr_jobs
 from filex import save_to_file
 
 app = Flask("JobScrapper")
@@ -20,7 +18,7 @@ def search():
     if keyword in db:
         jobs = db[keyword]
     else:
-        jobs = extract_wwr_jobs(keyword) + extract_berlin_jobs(keyword) + extract_web3_jobs(keyword)
+        jobs = extract_berlin_jobs(keyword)
         db[keyword] = jobs
     return render_template('search.html',keyword=keyword, jobs=jobs)
 

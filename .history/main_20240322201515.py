@@ -20,7 +20,7 @@ def search():
     if keyword in db:
         jobs = db[keyword]
     else:
-        jobs = extract_wwr_jobs(keyword) + extract_berlin_jobs(keyword) + extract_web3_jobs(keyword)
+        jobs = extract_wwr_jobs(keyword) + extract_berlin_jobs(keyword) + extract_web3_jobs(keyword) +
         db[keyword] = jobs
     return render_template('search.html',keyword=keyword, jobs=jobs)
 
